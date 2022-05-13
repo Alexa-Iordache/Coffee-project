@@ -1,9 +1,9 @@
 import React from "react";
-import './coffeepage.css';
+import './coffee-page.css';
 
 export default function CoffeePage() {
     return(
-        <div>
+        <div className="coffee-page__main-container">
             ceva
         </div>
     );
