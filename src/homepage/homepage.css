@@ -1,0 +1,39 @@
+html, body {
+    background-image: url("./images/cover_image.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.homepage__quote {
+    font-family: 'URW Chancert L', cursive;
+    font-weight: bolder;
+    font-size: 50px;
+    width: 500px;
+    padding-left: 80px;
+    padding-top: 100px;
+    color: rgba(255, 255, 255, 0.883);
+}
+
+.homepage__second-container {
+    display: flex;
+}
+
+.homepage__info {
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 50px;
+    color: rgb(205, 134, 1);
+    padding-left: 90px;
+    display: inline;
+}
+
+.homepage__info2 {
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 50px;
+    color: rgb(205, 134, 1);
+    padding-left: 30px;
+    display: inline;
+}
