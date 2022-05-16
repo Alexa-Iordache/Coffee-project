@@ -8,9 +8,6 @@ export default function MenuPage() {
             <div className="menupage__title">Coffe Emergency</div>
             <ul>
                 <li id="menupage__item">
-                   <Link to = '/homepage'>Home</Link>
-                </li>
-                <li id="menupage__item">
                    <Link to = '/coffee-page'>Coffee</Link>
                 </li>
             </ul>

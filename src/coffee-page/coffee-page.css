@@ -1,3 +1,8 @@
-/* .coffee-page__main-container {
+.coffee-page__main-container {
    background-color: rgba(104, 26, 26, 0.555);
-} */
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   bottom: 0px;
+   left: 0px;
+}

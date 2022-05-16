@@ -1,9 +1,17 @@
-html, body {
+.homepage__main-container {
     background-image: url("./images/cover_image.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 
 .homepage__quote {
@@ -37,3 +45,12 @@ html, body {
     padding-left: 30px;
     display: inline;
 }
+
+/* .homepage__third-container {
+    font-weight: bold;
+    font-family: 'URW Chancert L', cursive;
+    font-size: 30px;
+    margin-top: 50px;
+    color: rgba(182, 168, 168, 0.994);
+    padding-left: 80px;
+} */
