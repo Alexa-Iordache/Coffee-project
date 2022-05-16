@@ -5,4 +5,27 @@
    right: 0px;
    bottom: 0px;
    left: 0px;
+   display: flex;
+   flex-direction: column;
+}
+
+.coffee-page__imageList {
+   display: flex;
+   justify-content: center;
+   border: 5px black;
+   border-style: double;
+   margin-right: 80px;
+   margin-left: 80px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+
+.cofee-page__title {
+   display: flex;
+   flex-flow: row;
+   justify-content: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   font-size: 40px;
+   font-family: 'Bradley Hand', cursive;
 }
