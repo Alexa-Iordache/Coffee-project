@@ -12,8 +12,8 @@
 .coffee-page__imageList {
    display: flex;
    justify-content: center;
-   border: 5px black;
-   border-style: double;
+   /* border: 5px black;
+   border-style: double; */
    margin-right: 80px;
    margin-left: 80px;
    padding-top: 20px;
