@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import './modal.css';
+import ModalAdmin from "../modalAdmin";
 import { Modal, Box, Typography, Button } from '@mui/material';
+
 
 export default function ModalInfo(props) {
     const item = props.itemNeeded;
     const open = props.open;
     const handleClose = props.handleClose;
     const value = props.value;
+
+    // for the modal
+    const [openAdminVerif, setOpenAdminVerif] = useState(false);
+    //const [value, setValue] = useState(0);
+
+    const handleOpenAdminVerif = () => {
+        setOpenAdminVerif(true);
+    }
+
+    const handleCloseAdminVerif = () => {
+        setOpenAdminVerif(false);
+    }
+
 
     return (
         <Modal
@@ -19,14 +34,22 @@ export default function ModalInfo(props) {
                 </Typography>
 
                 <Typography sx={{ marginTop: 2 }} >
-                   <div> <span className="modal__subtitle">Price: </span>{item[value].price}</div>
-                   <div><span className="modal__subtitle">Quantity: </span>{item[value].quantity}</div>
-                   <div><span className="modal__subtitle">Description: </span>{item[value].description}</div>
+                    <div> <span className="modal__subtitle">Price: </span>{item[value].price}</div>
+                    <div><span className="modal__subtitle">Quantity: </span>{item[value].quantity}</div>
+                    <div><span className="modal__subtitle">Description: </span>{item[value].description}</div>
                 </Typography>
 
                 <Typography variant="h6" sx={styleButton} >
-                    <Button variant="contained" style={{backgroundColor: 'rgb(205, 134, 1)'}}>Edit</Button>
+                    <Button variant="contained" 
+                        style={{ backgroundColor: 'rgb(205, 134, 1)' }}
+                        onClick={() => { handleOpenAdminVerif() }}
+                    >Edit</Button>
                 </Typography>
+
+                <ModalAdmin
+                    open={openAdminVerif}
+                    handleClose={() => {handleCloseAdminVerif()}}
+                />
 
             </Box>
         </Modal>
@@ -35,20 +58,20 @@ export default function ModalInfo(props) {
 
 // the style I added for the modal
 const styleModal = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '5px double #000',
-  boxShadow: 24,
-  p: 4,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '5px double #000',
+    boxShadow: 24,
+    p: 4,
 };
 
 const styleButton = {
-    display: 'flex', 
-    justifyContent: 'center', 
+    display: 'flex',
+    justifyContent: 'center',
     marginTop: '15px',
     paddingTop: '10px',
 };
