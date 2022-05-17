@@ -1,6 +1,7 @@
 import React from 'react';
 import './coffee-page.css';
 import CoffeeTabs from '../tabs';
+import Modal from '../modal';
 
 export default function CoffeePage() {
 
@@ -9,6 +10,7 @@ export default function CoffeePage() {
       <div className='cofee-page__title'>Coffee MENU</div>
       <div className='coffee-page__imageList'>
         <CoffeeTabs/>
+        <Modal/>
       </div>
     </div>
   );
