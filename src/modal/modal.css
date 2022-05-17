@@ -23,21 +23,14 @@
     border-top-right-radius: 10px;
 }
 
-.modal-title {
-    margin: 0;
-    color: blue;
-    text-align: center;
+.modal__title {
+    font-weight: bold;
+    font-family: 'URW Chancert L', cursive;
+    color: rgb(205, 134, 1);
 }
 
-.modal-body {
-    padding: 10px;
-    color: blue;
-}
-
-.modal-body__description {
-    color: rgb(0, 98, 178);
-}
-
-.modal-body__info {
-    color: rgb(76, 175, 255);
+.modal__subtitle {
+    font-weight: bold;
+    font-family: 'URW Chancert L', cursive;
+    color: rgb(205, 134, 1);
 }

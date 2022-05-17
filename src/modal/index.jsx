@@ -14,12 +14,14 @@ export default function ModalInfo(props) {
             onClose={handleClose}
         >
             <Box sx={styleModal}>
-                <Typography variant="h6">
-                    {item[value].title}
+                <Typography variant="h6" >
+                    <div className="modal__title">{item[value].title}</div>
                 </Typography>
 
                 <Typography sx={{ marginTop: 2 }} >
-                {item[value].description}
+                   <div> <span className="modal__subtitle">Price: </span>{item[value].price}</div>
+                   <div><span className="modal__subtitle">Quantity: </span>{item[value].quantity}</div>
+                   <div><span className="modal__subtitle">Description: </span>{item[value].description}</div>
                 </Typography>
             </Box>
         </Modal>

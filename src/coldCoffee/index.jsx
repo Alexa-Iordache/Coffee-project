@@ -87,21 +87,27 @@ const itemData = [
     title: 'Iced Coffee',
     rows: 2,  // the first image I want to occupy 2 rows and 2 columns
     cols: 2,
-    description: 'ceva 1',
-    value: '0'
+    value: '0',
+    price: '2.65$',
+    quantity: '470ml',
+    description: 'Is a coffee beverage served cold. It may be prepared either by brewing coffee normally and then serving it over ice or in cold milk, or by brewing the coffee cold.'
   },
   {
     img: image2,
     title: 'Frappuccino',  // this image will occupy 1 row and 2 columns 
     cols: 2,
-    description: 'ceva 2',
-    value: '1'
+    value: '1',
+    price: '3.95$',
+    quantity: '470ml',
+    description: 'It consists of coffee or crème base, blended with ice and ingredients such as flavored syrups and usually topped with whipped cream and or spices.'
   },
   {
     img: image3,
     title: 'Iced Espresso',
     cols: 2,
-    description: 'ceva 3',
-    value: '2'
+    value: '2',
+    price: '2.25$',
+    quantity: '44ml',
+    description: 'Espresso served over ice, often with milk'
   },
 ];
