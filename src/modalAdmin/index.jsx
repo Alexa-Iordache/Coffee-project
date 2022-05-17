@@ -20,10 +20,9 @@ export default function ModalAdmin(props) {
     }
 
     const handleClick = (username, password) => {
-        {(username === 'admin' && password === 'admin')
+        (username === 'admin' && password === 'admin')
         ? console.log("admis")
         : console.log("neadmis")
-        }
     }
 
 

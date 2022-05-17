@@ -1,4 +1,4 @@
-.coffee-page__main-container {
+body{
    background-color: rgba(104, 26, 26, 0.555);
    position: absolute;
    top: 0px;
@@ -7,13 +7,21 @@
    left: 0px;
    display: flex;
    flex-direction: column;
+   height: 100%;
 }
 
 .coffee-page__imageList {
    display: flex;
    justify-content: center;
-   /* border: 5px black;
-   border-style: double; */
+   margin-right: 80px;
+   margin-left: 80px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+
+.coffee-page__table {
+   display: flex;
+   justify-content: center;
    margin-right: 80px;
    margin-left: 80px;
    padding-top: 20px;
