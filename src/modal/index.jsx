@@ -1,6 +1,6 @@
 import React from "react";
 import './modal.css';
-import { Modal, Box, Typography } from '@mui/material';
+import { Modal, Box, Typography, Button } from '@mui/material';
 
 export default function ModalInfo(props) {
     const item = props.itemNeeded;
@@ -23,6 +23,11 @@ export default function ModalInfo(props) {
                    <div><span className="modal__subtitle">Quantity: </span>{item[value].quantity}</div>
                    <div><span className="modal__subtitle">Description: </span>{item[value].description}</div>
                 </Typography>
+
+                <Typography variant="h6" sx={styleButton} >
+                    <Button variant="contained" style={{backgroundColor: 'rgb(205, 134, 1)'}}>Edit</Button>
+                </Typography>
+
             </Box>
         </Modal>
     );
@@ -39,4 +44,11 @@ const styleModal = {
   border: '5px double #000',
   boxShadow: 24,
   p: 4,
+};
+
+const styleButton = {
+    display: 'flex', 
+    justifyContent: 'center', 
+    marginTop: '15px',
+    paddingTop: '10px',
 };
