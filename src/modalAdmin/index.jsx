@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ModalMessage from "../modalMessage";
 import { Modal, Box, Typography, TextField, Button } from '@mui/material';
 
 export default function ModalAdmin(props) {
@@ -9,20 +10,32 @@ export default function ModalAdmin(props) {
     const [password, setPassword] = useState('');
 
     // function that updates the text from tge 'username' input 
-    const handleUsername = (event) => {
-        setUsername(event.target.value);
-        // console.log(username);
+    const handleUsername = e => {
+        setUsername(e.target.value);
     }
 
     // function that updates the text from tge 'password' input 
-    const handlePassword = (event) => {
-        setPassword(event.target.value);
+    const handlePassword = e => {
+        setPassword(e.target.value);
     }
 
-    const handleClick = (username, password) => {
-        (username === 'admin' && password === 'admin')
-        ? console.log("admis")
-        : console.log("neadmis")
+    // for the modal
+    const [openMessage, setOpenMessage] = useState(false);
+
+    const handleCloseMessage = () => {
+        setOpenMessage(false);
+    }
+
+
+    const handleClick = () => {
+        setOpenMessage(true);
+
+        username !== 'admin' || password !== 'admin'
+            ? 
+            <ModalMessage
+                open={openMessage}
+                handleClose={() => { handleCloseMessage() }} /> 
+            : console.log("da")
     }
 
 
@@ -47,7 +60,7 @@ export default function ModalAdmin(props) {
                         label="Required"
                         defaultValue=" Username"
                         value={username}
-                        onChange={() => {handleUsername()}}
+                        onChange={(e) => { handleUsername(e) }}
                     />
                 </Typography>
 
@@ -56,15 +69,15 @@ export default function ModalAdmin(props) {
                         required
                         id="outlined-required"
                         label="Required"
-                        defaultValue=" Password"
+                        defaultValue="Password"
                         value={password}
-                        onChange={() => {handlePassword()}}
+                        onChange={(e) => { handlePassword(e) }}
                     />
                 </Typography>
 
                 <Typography sx={styleButton} >
                     <Button
-                        onClick={() => {handleClick(username, password)}} // when the user clickes the 'login' button, 
+                        onClick={(e) => { handleClick(e) }} // when the user clickes the 'login' button, 
                         // they are redirected to the 'dashboard' page
                         disabled={username === '' || password === '' ? true : false} // if username or password is not written, 
                         // then the user can not log in (the 'login' button is disabled) 
@@ -77,6 +90,12 @@ export default function ModalAdmin(props) {
                         Login </Button>
                 </Typography>
 
+                {/* {username !== 'admin' || password !== 'admin'
+                ? 
+                    <ModalMessage
+                        open={openModalMessage}
+                        handleClose={() => {handleCloseMEssage()}}/>
+                : console.log("da")} */}
 
             </Box>
         </Modal>

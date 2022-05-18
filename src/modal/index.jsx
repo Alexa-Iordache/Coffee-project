@@ -10,7 +10,7 @@ export default function ModalInfo(props) {
     const handleClose = props.handleClose;
     const value = props.value;
 
-    // for the modal
+    // for the modal that verifies the user is an admin of the page
     const [openAdminVerif, setOpenAdminVerif] = useState(false);
     //const [value, setValue] = useState(0);
 
