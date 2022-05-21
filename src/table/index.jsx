@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-// import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,18 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
-// import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-// import IconButton from '@mui/material/IconButton';
-// import Tooltip from '@mui/material/Tooltip';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Switch from '@mui/material/Switch';
-// import DeleteIcon from '@mui/icons-material/Delete';
-// import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
+// the items from the tabel
 const rows = [
   {
     title: 'Iced Coffee',
@@ -79,7 +70,21 @@ const rows = [
   },
 ];
 
+// the headCells after which it will be possible to sort the elements in the table
+const headCells = [
+  {
+    id: 'price',
+    numeric: true,
+    label: 'Price ($)',
+  },
+  {
+    id: 'quantity',
+    numeric: true,
+    label: 'Quantity (ml)',
+  },
+];
 
+// function that compares two items
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -90,15 +95,15 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
+// a function that calls the 'descendingComparator' based on the valuea of the 
+// 'order'
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
+// fucntion used to sort the elements
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -111,35 +116,9 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-const headCells = [
-  {
-    id: 'drinks',
-    numeric: false,
-    disablePadding: true,
-    label: 'Drinks',
-  },
-  {
-    id: 'price',
-    numeric: true,
-    disablePadding: false,
-    label: 'Price ($)',
-  },
-  {
-    id: 'quantity',
-    numeric: true,
-    disablePadding: false,
-    label: 'Quantity (ml)',
-  },
-  {
-    id: 'description',
-    numeric: false,
-    disablePadding: false,
-    label: 'Description',
-  },
-];
-
-function EnhancedTableHead(props) {
-  const {  order, orderBy, rowCount, onRequestSort } =
+// function to display the table head 
+function CoffeeTableHead(props) {
+  const {  order, orderBy, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -147,11 +126,15 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
+      <TableRow sx={{backgroundColor: '#800000'}}>
+        <TableCell sx={styleTableHeadCell}> Drinks </TableCell>
+
+        {/* the user can sort the items from the tabel based on price and quantity */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             sortDirection={orderBy === headCell.id ? order : false}
+            sx={styleSortingTableHeadCell}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -167,186 +150,68 @@ function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell sx={styleTableHeadCell}>Description</TableCell>
       </TableRow>
     </TableHead>
   );
 }
 
-EnhancedTableHead.propTypes = {
+CoffeeTableHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
 
-// const EnhancedTableToolbar = (props) => {
-//   const { numSelected } = props;
-
-//   return (
-//     <Toolbar
-//       sx={{
-//         pl: { sm: 2 },
-//         pr: { xs: 1, sm: 1 },
-//         ...(numSelected > 0 && {
-//           bgcolor: (theme) =>
-//             alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-//         }),
-//       }}
-//     >
-//       {numSelected > 0 ? (
-//         <Typography
-//           sx={{ flex: '1 1 100%' }}
-//           color="inherit"
-//           variant="subtitle1"
-//           component="div"
-//         >
-//           {numSelected} selected
-//         </Typography>
-//       ) : (
-//         <Typography
-//           sx={{ flex: '1 1 100%' }}
-//           variant="h6"
-//           id="tableTitle"
-//           component="div"
-//         >
-//           Nutrition
-//         </Typography>
-//       )}
-
-//       {numSelected > 0 ? (
-//         <Tooltip title="Delete">
-//           {/* <IconButton>
-//             <DeleteIcon />
-//           </IconButton> */}
-//         </Tooltip>
-//       ) : (
-//         <Tooltip title="Filter list">
-//           {/* <IconButton>
-//             <FilterListIcon />
-//           </IconButton> */}
-//         </Tooltip>
-//       )}
-//     </Toolbar>
-//   );
-// };
-
-// EnhancedTableToolbar.propTypes = {
-//   numSelected: PropTypes.number.isRequired,
-// };
-
-export default function EnhancedTable() {
+export default function CoffeTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const handleRequestSort = (event, property) => {
+  const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
-  // const handleSelectAllClick = (event) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = rows.map((n) => n.name);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
-
-  // const handleClick = (event, name) => {
-  //   const selectedIndex = selected.indexOf(name);
-  //   let newSelected = [];
-
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, name);
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1));
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1));
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1),
-  //     );
-  //   }
-
-  //   setSelected(newSelected);
-  // };
-
-  const handleChangePage = (event, newPage) => {
+  // function to change the page
+  const handleChangePage = (newPage) => {
     setPage(newPage);
   };
 
+  // function to change the number of the rows displayed in the table
+  // there can be dispalyed 5 or 10 rows at once in the  table
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  // const handleChangeDense = (event) => {
-  //   setDense(event.target.checked);
-  // };
-
-  // const isSelected = (name) => selected.indexOf(name) !== -1;
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
-        <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            // size={dense ? 'small' : 'medium'}
-          >
-            <EnhancedTableHead
-              // numSelected={selected.length}
+        <TableContainer sx={{borderRadius: '5px'}}>
+          <Table>
+            <CoffeeTableHead
               order={order}
               orderBy={orderBy}
-              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  // const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
-
+                .map((row) => {
+                  
                   return (
-                    <TableRow
-                      hover
-                      // onClick={(event) => handleClick(event, row.name)}
-                      // role="checkbox"
-                      // aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.name}
-                      // selected={isItemSelected}
-                    >
-                      <TableCell> {row.title} </TableCell>
-                      <TableCell> {row.price}</TableCell>
-                      <TableCell> {row.quantity}</TableCell>
-                      <TableCell> {row.description}</TableCell>
+                    <TableRow hover>
+                      <TableCell sx={{ textAlign: 'center'}}> {row.title} </TableCell>
+                      <TableCell sx={{ textAlign: 'center'}}> {row.price}</TableCell>
+                      <TableCell sx={{ textAlign: 'center'}}> {row.quantity}</TableCell>
+                      <TableCell sx={{ textAlign: 'center'}}> {row.description}</TableCell>
                     </TableRow>
                   );
                 })}
-              {/* {emptyRows > 0 && (
-                <TableRow
-                  // style={{
-                  //   height: (dense ? 33 : 53) * emptyRows,
-                  // }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -363,3 +228,16 @@ export default function EnhancedTable() {
     </Box>
   );
 }
+
+const styleTableHeadCell = {
+  fontWeight: 'bolder', 
+  color: '#90b1c8', 
+  textAlign: 'center'
+};
+
+const styleSortingTableHeadCell = {
+  fontWeight: 'bolder', 
+  color: '#90b1c8', 
+  textAlign: 'center',
+  width: '115px'
+};
