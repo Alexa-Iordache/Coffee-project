@@ -81,7 +81,6 @@ export default function StrongCoffee() {
 }
 
 const itemData = [
-
   {
     img: image1,
     title: 'Espresso',

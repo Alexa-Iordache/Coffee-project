@@ -1,7 +1,7 @@
 import React from 'react';
 import './coffee-page.css';
 import CoffeeTabs from '../tabs';
-import BasicTable from '../table';
+import EnhancedTable from '../table';
 
 export default function CoffeePage() {
 
@@ -12,7 +12,7 @@ export default function CoffeePage() {
         <CoffeeTabs  />
       </div>
       <div className='coffee-page__table'>
-        <BasicTable />
+        <EnhancedTable/>
       </div>
     </div>
   );
