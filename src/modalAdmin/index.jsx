@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ModalMessage from "../modalMessage";
+import ModalMessageAff from "../modalMessageAff";
 import { Modal, Box, Typography, TextField, Button } from '@mui/material';
 
 export default function ModalAdmin(props) {
@@ -29,13 +30,16 @@ export default function ModalAdmin(props) {
 
     const handleClick = () => {
         setOpenMessage(true);
+        console.log(openMessage);
 
-        username !== 'admin' || password !== 'admin'
+        (username !== 'admin' || password !== 'admin')
             ? 
             <ModalMessage
                 open={openMessage}
-                handleClose={() => { handleCloseMessage() }} /> 
-            : console.log("da")
+                handleClose={() => { handleCloseMessage() }} />
+            :  <ModalMessageAff
+            open={openMessage}
+            handleClose={() => { handleCloseMessage() }} />
     }
 
 
@@ -90,12 +94,15 @@ export default function ModalAdmin(props) {
                         Login </Button>
                 </Typography>
 
-                {/* {username !== 'admin' || password !== 'admin'
+                {username !== 'admin' || password !== 'admin'
                 ? 
                     <ModalMessage
-                        open={openModalMessage}
-                        handleClose={() => {handleCloseMEssage()}}/>
-                : console.log("da")} */}
+                        open={openMessage}
+                        handleClose={() => {handleCloseMessage()}}/>
+                :  <ModalMessageAff
+                open={openMessage}
+                handleClose={() => {handleCloseMessage()}}/>
+                }
 
             </Box>
         </Modal>
