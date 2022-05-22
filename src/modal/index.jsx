@@ -3,16 +3,15 @@ import './modal.css';
 import ModalAdmin from "../modalAdmin";
 import { Modal, Box, Typography, Button } from '@mui/material';
 
-
+// modal with the details about a drink
 export default function ModalInfo(props) {
     const item = props.itemNeeded;
     const open = props.open;
     const handleClose = props.handleClose;
     const value = props.value;
 
-    // for the modal that verifies the user is an admin of the page
+    // the modal that verifies the user is an admin of the page
     const [openAdminVerif, setOpenAdminVerif] = useState(false);
-    //const [value, setValue] = useState(0);
 
     const handleOpenAdminVerif = () => {
         setOpenAdminVerif(true);
@@ -43,7 +42,10 @@ export default function ModalInfo(props) {
                     <Button variant="contained" 
                         style={{ backgroundColor: 'rgb(205, 134, 1)' }}
                         onClick={() => { handleOpenAdminVerif() }}
-                    >Edit</Button>
+                    >Edit</Button> 
+                    {/* when the 'edit' button is pressed, the user is qustioned if he is an admin
+                    as only the admin can edit the info about a drink -> so, another modal will pop up
+                    giving the user the chance to log in  */}
                 </Typography>
 
                 <ModalAdmin

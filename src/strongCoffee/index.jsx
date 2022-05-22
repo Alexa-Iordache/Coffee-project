@@ -8,10 +8,6 @@ import image1 from './images/espresso_scurt.png';
 import image2 from './images/espresso_lung.png';
 import image3 from './images/americano.png';
 
-// function to calculate the proper size of an image
-// the 'srcset' attribute allows me to specify a list of images along with dimension I want the images
-// to have (itemData)
-// I also used 'src' attribute in case the browser does not support 'srcset'
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -19,7 +15,6 @@ function srcset(image, size, rows = 1, cols = 1) {
     srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
   };
 }
-
 
 export default function StrongCoffee() {
 
@@ -30,11 +25,9 @@ export default function StrongCoffee() {
   const handleOpen = (item) => {
     setOpen(true);
     setValue(item.value);
-    // console.log(value);
   }
   const handleClose = () => {
     setOpen(false);
-    //console.log(value);
   }
 
 

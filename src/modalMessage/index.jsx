@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Box, Typography } from '@mui/material';
 
-
+// the modal that appears when the user is not the admin
 export default function ModalMessage(props) {
 
    const open = props.open;

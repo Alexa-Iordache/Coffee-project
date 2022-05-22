@@ -2,8 +2,8 @@ import React from "react";
 import './homepage.css';
 import MenuPage from "../menu";
 import { VscDebugBreakpointLog } from 'react-icons/vsc';
-// import { Link } from "react-router-dom";
 
+// the home page 
 export default function HomePage() {
     return (
         <div className="homepage__main-container">
@@ -16,9 +16,6 @@ export default function HomePage() {
                <div className="homepage__info2"><VscDebugBreakpointLog/></div>
                <div className="homepage__info2">ROASTED WITH LOVE</div>
             </div>
-            {/* <div className="homepage__third-container">
-                Choose what <Link to = '/coffee-page'>coffe</Link> you want 
-            </div> */}
         </div>
     );
 }

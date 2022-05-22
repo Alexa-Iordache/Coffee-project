@@ -2,6 +2,7 @@ import React from "react";
 import './menu.css';
 import { Link } from "react-router-dom";
 
+// function for the menu 
 export default function MenuPage() {
     return(
         <div className="menupage__main-container">

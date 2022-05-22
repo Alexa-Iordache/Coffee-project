@@ -5,6 +5,7 @@ import HotCoffee from "../hotCoffee";
 import ColdCoffee from "../coldCoffee";
 import './tabs.css';
 
+// the function used to display the tabs with the coffee images
 export default function CoffeeTabs() {
   const [value, setValue] = useState(0);
 

@@ -3,6 +3,7 @@ import ModalMessage from "../modalMessage";
 import ModalMessageAff from "../modalMessageAff";
 import { Modal, Box, Typography, TextField, Button } from '@mui/material';
 
+// the modal with the log in  part
 export default function ModalAdmin(props) {
     const open = props.open;
     const handleClose = props.handleClose;
@@ -32,7 +33,9 @@ export default function ModalAdmin(props) {
         setOpenMessage(true);
         console.log(openMessage);
 
-        (username !== 'admin' || password !== 'admin')
+        // if both the username and password are 'admin', then a modal with a specific text will appear
+        // in the other case, another modal with a different text will appear
+        (username !== 'admin' || password !== 'admin') 
             ? 
             <ModalMessage
                 open={openMessage}
@@ -58,6 +61,7 @@ export default function ModalAdmin(props) {
                 </Typography>
 
                 <Typography sx={{ marginTop: 3 }} >
+                    {/* the input field for the username */}
                     <TextField
                         required
                         id="outlined-required"
@@ -69,6 +73,7 @@ export default function ModalAdmin(props) {
                 </Typography>
 
                 <Typography sx={{ marginTop: 3 }} >
+                    {/* the input field for the password */}
                     <TextField
                         required
                         id="outlined-required"

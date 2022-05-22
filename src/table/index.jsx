@@ -1,6 +1,7 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
+// the elements that will be in the head of the table
 const tableHead = [
   { field: 'id', headerName: 'ID', flex: 0 },
   { field: 'title', headerName: 'Drinks', sortable: false, flex: 0 },
